@@ -14,16 +14,15 @@ private static Scanner entrada;
 		int op = entrada.nextInt();
 		entrada.nextLine(); //para vaciar el buffer del scanner
 		char [] letters;
-		//String path = "D:\\alber\\Documents\\Eclipse\\workspace\\Ahorcado\\";
-		String path = "C:\\Alberto\\EclipsePortable\\Data\\workspace\\Ahorcado\\";
 		Ahorcado juego = new Ahorcado();
+		String path;
 		if (op==0){
-			path = path + "Esp.txt";
+			path =  "Esp.txt";
 			juego.setDictionaryPath(path);
 			letters = new char[]  {'E', 'A', 'O', 'S', 'N', 'R', 'I', 'L','D'};		
 		}
 		else{
-			path = path + "Eng.txt";
+			path = "Eng.txt";
 			juego.setDictionaryPath(path);
 			letters = new char[]  {'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H','R', 'D', 'L','U'};
 		}

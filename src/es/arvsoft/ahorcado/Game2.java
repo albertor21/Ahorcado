@@ -13,14 +13,14 @@ public class Game2 {
 		System.out.println("0-Castellano   1-Inglés");
 		int op = entrada.nextInt();
 		entrada.nextLine(); //para vaciar el buffer del scanner
-		//String path = "C:\\Alberto\\EclipsePortable\\Data\\workspace\\Ahorcado\\";
-		String path = "D:\\alber\\Documents\\Eclipse\\workspace\\Ahorcado\\";		Ahorcado juego = new Ahorcado();
+		String path;
+		Ahorcado juego = new Ahorcado();
 		if (op==0){
-			path = path + "Esp.txt";
+			path =  "Esp.txt";
 			juego.setDictionaryPath(path);
 		}
 		else {
-			path = path + "Eng.txt";	
+			path =  "Eng.txt";	
 			juego.setDictionaryPath(path);
 		}
 		entrada = new Scanner (System.in);

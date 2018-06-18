@@ -9,9 +9,7 @@ public class test {
 
 	public static void main(String[] args) {
 		Ahorcado juego = new Ahorcado("hotel");
-		//Ahorcado juego = new Ahorcado("analyse");
-		String path = "C:\\Alberto\\EclipsePortable\\Data\\workspace\\Ahorcado\\Esp.txt";
-		//String path = "D:\\alber\\Documents\\Eclipse\\workspace\\Ahorcado\\Eng.txt";
+		String path = "Esp.txt";
 		juego.setDictionaryPath(path);
 		try{
 			juego.InitializeDictionary();
