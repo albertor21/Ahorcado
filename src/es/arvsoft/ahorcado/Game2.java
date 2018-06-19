@@ -1,5 +1,6 @@
 package es.arvsoft.ahorcado;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,12 +17,18 @@ public class Game2 {
 		String path;
 		Ahorcado juego = new Ahorcado();
 		if (op==0){
-			path =  "Esp.txt";
+			path ="Esp.txt";
 			juego.setDictionaryPath(path);
 		}
 		else {
-			path =  "Eng.txt";	
+			path = "Eng.txt";	
 			juego.setDictionaryPath(path);
+		}
+		try {
+			juego.InitializeDictionary();
+		} catch (FileNotFoundException e) {
+			System.out.println("no encuentro el diccionario");
+			e.printStackTrace();
 		}
 		entrada = new Scanner (System.in);
 		System.out.println("Piensa una palabra");

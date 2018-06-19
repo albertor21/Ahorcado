@@ -1,5 +1,6 @@
 package es.arvsoft.ahorcado;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,10 +15,10 @@ private static Scanner entrada;
 		int op = entrada.nextInt();
 		entrada.nextLine(); //para vaciar el buffer del scanner
 		char [] letters;
-		Ahorcado juego = new Ahorcado();
 		String path;
+		Ahorcado juego = new Ahorcado();
 		if (op==0){
-			path =  "Esp.txt";
+			path = "Esp.txt";
 			juego.setDictionaryPath(path);
 			letters = new char[]  {'E', 'A', 'O', 'S', 'N', 'R', 'I', 'L','D'};		
 		}
@@ -25,6 +26,12 @@ private static Scanner entrada;
 			path = "Eng.txt";
 			juego.setDictionaryPath(path);
 			letters = new char[]  {'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H','R', 'D', 'L','U'};
+		}
+		try {
+			juego.InitializeDictionary();
+		} catch (FileNotFoundException e) {
+			System.out.println("no encuentro el diccionario");
+			e.printStackTrace();
 		}
 		entrada = new Scanner (System.in);
 		System.out.println("Piensa una palabra");
