@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class test {
 
 	public static void main(String[] args) {
-		Ahorcado juego = new Ahorcado("eche");
+		Ahorcado juego = new Ahorcado("urbe");
 		String path = "Esp.txt";
 		juego.setDictionaryPath(path);
 		try {

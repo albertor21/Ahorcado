@@ -57,7 +57,7 @@ public class GameBatch {
 				if (juego.getWord().equalsIgnoreCase(juego.getGuess())) {
 					seguir = false;
 					// System.out.print("ACIERTO,");
-					acierto = true;
+					acierto = true;				
 					// System.out.print(juego.getWord());
 					break;
 				}
@@ -81,7 +81,7 @@ public class GameBatch {
 				sb.append("FALLO\t");
 			}
 			sb.append(juego.getWord());
-			System.out.println(juego.getWord());
+			//System.out.println(juego.getWord());
 			sb.append("\t" + juego.getTries());
 			sb.append("\t" + juego.getNumFails());
 			sb.append("\n");

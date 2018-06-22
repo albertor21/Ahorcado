@@ -18,12 +18,12 @@ private static Scanner entrada;
 		String path;
 		Ahorcado juego = new Ahorcado();
 		if (op==0){
-			path = "Esp.txt";
+			path = "./Esp.txt";
 			juego.setDictionaryPath(path);
 			letters = new char[]  {'E', 'A', 'O', 'S', 'N', 'R', 'I', 'L','D'};		
 		}
 		else{
-			path = "Eng.txt";
+			path = "./Eng.txt";
 			juego.setDictionaryPath(path);
 			letters = new char[]  {'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H','R', 'D', 'L','U'};
 		}
@@ -69,11 +69,12 @@ private static Scanner entrada;
 			}
 			//System.out.println(juego.getRegExp(juego.getGuess()));
 			System.out.println(juego.getGuess());
-		}
-		entrada.close();
+		}		
 		ArrayList<Query> lista = juego.getListOfSolutions(juego.getGuess(), 1);
 		String solution = lista.get(0).getText();
 		System.out.println("la palabra es: " + solution.toUpperCase());	
+		int op2 = entrada.nextInt();
+		entrada.close();
 	}
 		
 	private static int [] parsePositions(String answer){

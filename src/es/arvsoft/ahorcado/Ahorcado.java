@@ -20,7 +20,8 @@ public class Ahorcado {
 	private HashSet<Character> matches;
 	private String dictPath; // path al diccionario de palabras
 	private ArrayList<String> mostFrequent;
-	BufferedReader br;
+	private BufferedReader br;
+	private ArrayList<String> dictionary;
 
 	Ahorcado() {
 		fails = new HashSet<Character>();
@@ -139,6 +140,7 @@ public class Ahorcado {
 	public void InitializeDictionary() throws FileNotFoundException {
 		final int thFreq= 4;
 		br = new BufferedReader(new FileReader(this.getDictionaryPath()));
+		dictionary = new ArrayList<String>();
 		//se inicializa el array mostFrequent para albergar en orden aleatorio
 		//las primeras thFreq letras mas frecuentes del diccionario
 		//que estan guardadas en la tercera linea de dicho archivo
@@ -149,11 +151,23 @@ public class Ahorcado {
 			for (int c = 0; c < thFreq; c++) {
 				mostFrequent.add(mostFreqArray[c]);		
 			}
+			//relleno el arraylist dictionary a partir del archivo
+			String line = br.readLine();
+			dictionary.add(line);
+			while (line != null) {
+				line = br.readLine();
+				dictionary.add(line );
+			}
 		} catch (IOException e) {
 			System.out.println("no encuentro el diccionario");
 			e.printStackTrace();
 		}
-		Collections.shuffle(mostFrequent);
+		Collections.shuffle(mostFrequent);	
+		/*mostFrequent.add("a");
+		mostFrequent.add("e");
+		mostFrequent.add("o");
+		mostFrequent.add("s");*/
+	
 	}
 
 	public String getRegExp(String guess) {
@@ -177,25 +191,15 @@ public class Ahorcado {
 		Pattern pattern = Pattern.compile(regExp);
 		Matcher matcher = null;
 		int ocurr = 0;
-		int lineNumber = 0;
-		try {
-			String line = br.readLine();
-			lineNumber++;
-			while (line != null) {
-				matcher = pattern.matcher(line);
-				if (matcher.find()) {
-					listOfSolutions.add(new Query(line, lineNumber));
-					ocurr++;
-					if (ocurr >= maxHits) {
-						break;
-					}
-				}
-				line = br.readLine();
-				lineNumber++;
+		for (int lineNumber = 0; lineNumber< dictionary.size()-1; lineNumber++){
+			//String line = dictionary.get(lineNumber);
+			String line = dictionary.get(lineNumber);
+			matcher = pattern.matcher(line);
+			if (matcher.find()){
+				listOfSolutions.add(new Query(line, lineNumber+1));
+				ocurr++;
+				if (ocurr>=maxHits) break;
 			}
-		} catch (IOException e) {
-			System.out.println("no encuentro el diccionario");
-			e.printStackTrace();
 		}
 		return listOfSolutions;
 	}
