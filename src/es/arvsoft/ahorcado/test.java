@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class test {
 
 	public static void main(String[] args) {
-		Ahorcado juego = new Ahorcado("urbe");
+		Ahorcado juego = new Ahorcado("balada");
 		String path = "Esp.txt";
 		juego.setDictionaryPath(path);
 		try {
@@ -50,6 +50,18 @@ public class test {
 				break;
 			}
 			ArrayList<Query> lista = juego.getListOfSolutions(juego.getGuess(),5);
+			if (juego.getNumFails() > 5) {
+				// se la juega a la primera palabra de listOfSolutions
+				System.out.println("me la juego, es:");
+				System.out.println(lista.get(0).getText());
+				if (lista.get(0).getText()
+						.equalsIgnoreCase(juego.getWord())) {
+					 System.out.print("ACIERTO,");
+				} else {
+					System.out.print("FALLO,");
+				}
+				break;
+			}
 			if (lista.size() == 1) {
 				System.out.println("Ya sé la palabra.");
 				System.out.println("Es " + lista.get(0).getText());

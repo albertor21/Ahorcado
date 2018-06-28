@@ -62,6 +62,8 @@ private static Scanner entrada;
 			if (lista.size()==1){
 				String solution = lista.get(0).getText();
 				System.out.println("la palabra es: " + solution.toUpperCase());
+				System.out.println("Press any key to finish...");
+				entrada.nextLine();			
 				return;
 			}
 			for (Query item : lista){
@@ -73,8 +75,8 @@ private static Scanner entrada;
 		ArrayList<Query> lista = juego.getListOfSolutions(juego.getGuess(), 1);
 		String solution = lista.get(0).getText();
 		System.out.println("la palabra es: " + solution.toUpperCase());	
-		int op2 = entrada.nextInt();
-		entrada.close();
+		System.out.println("Press any key to finish...");
+		entrada.nextLine();
 	}
 		
 	private static int [] parsePositions(String answer){

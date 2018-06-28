@@ -21,6 +21,8 @@ public class GameBatch {
 		double t0 = System.nanoTime();
 		System.out.println("Resultado,Palabra,intentos,fallos");
 		for (int c = 0; c < listaPrueba.size(); c++) {
+			if (c%1000==0) System.out.println("comprobados " + c + " palabras.");
+			//System.out.println(listaPrueba.get(c));
 			Ahorcado juego = new Ahorcado(listaPrueba.get(c));
 			String path = "Esp.txt";
 			juego.setDictionaryPath(path);
@@ -95,7 +97,7 @@ public class GameBatch {
 
 	public static ArrayList<String> getPalabrasPrueba() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(
-				"15000_16000Esp.txt"));
+				"1_150000Esp.txt"));
 		ArrayList<String> result = new ArrayList<String>();
 		try {
 			String line = br.readLine();

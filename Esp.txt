@@ -3805,7 +3805,7 @@ cantar
 deterioro
 platos
 ruso
-FALSO
+falso
 listas
 magnitud
 vazquez
