@@ -1,3 +1,4 @@
 # Ahorcado
-juego del ahorcado
+juego del ahorcado.
+
 Ejercicio de programacion en java
